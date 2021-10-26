@@ -13,6 +13,8 @@
         <meta content="" property="og:description">
     </head>
     <body>
+        <p id="res"></p>
+        <p><a href="https://github.com/Alirezarfe/discord-timestamp" style="color: #EDEDED;">How to use</a></p>
         <script>
             const ALL_STYLES = "tTdDfFR";
             const DATETIME_PATTERN = /^(?:(\d{4})-)?(\d{1,2})-(\d{1,2})(?:_(\d{1,2}):(\d{1,2})(?::\d{1,2})?)?$/;
@@ -52,7 +54,7 @@
             if (style !== undefined) {
                 md += `:${style}`;
             }
-            document.getElementsByTagName("body")[0].innerText = md = md + ">";
+            document.getElementById("res").innerText = md = md + ">";
             document.querySelector('[property="og:description"]').content = md;
         </script>
     </body>
