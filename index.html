@@ -10,7 +10,7 @@
             }
         </style>
         <meta content="Discord Timestamp Markdown Helper" property="og:title">
-        <meta content="If you see this, you're awesome" property="og:description">
+        <meta content="" property="og:description">
     </head>
     <body>
         <script>
@@ -53,7 +53,7 @@
                 md += `:${style}`;
             }
             document.getElementsByTagName("body")[0].innerText = md = md + ">";
-            document.querySelector('[property="og:description"]').setAttribute("content", md);
+            document.querySelector('[property="og:description"]').setAttribute("content", `Markdown: ${md} (${md.replaceAll(":", "\\:")})`);
         </script>
     </body>
 </html>
