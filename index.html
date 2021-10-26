@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Discord Timestamp Markdown Helper</title>
+        <style>
+            body {
+                background-color: #2B2B2A;
+                color: #FF9855;
+                font-family: Calibri;
+            }
+        </style>
+        <meta content="Discord Timestamp Markdown Helper" property="og:title">
+        <meta content="" property="og:description">
+    </head>
+    <body>
+        <script>
+            const ALL_STYLES = "tTdDfFR";
+            const DATETIME_PATTERN = /^(?:(\d{4})-)?(\d{1,2})-(\d{1,2})(?:_(\d{1,2}):(\d{1,2})(?::\d{1,2})?)?$/;
+            const DURATION_PATTERN = /^(?:(\d+)w)?(?:(\d+)d)?(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s?)?$/i;
+            
+            let time = new Date, params = new URLSearchParams(window.location.search), style;
+            if (params.has("style") && ALL_STYLES.includes(params.get("style"))) {
+                style = params.get("style");
+            }
+            if (params.has("from")) {
+                let match = params.get("from").match(DATETIME_PATTERN);
+                if (match !== null) {
+                    time = new Date(0);
+                    let [, year = new Date().getFullYear(), mo, day, hours, minutes, seconds] = match;
+                    time.setFullYear(year), time.setMonth(+mo - 1), time.setDate(day);
+                    if (hours !== undefined) {
+                        time.setHours(hours), time.setMinutes(minutes), time.setSeconds(seconds ?? 0);
+                    }
+                }
+            }
+            time = Math.floor(+time / 1000);
+            if (params.has("add")) {
+                let arg = params.get("add"), coe = 1;
+                if (arg[0] === "-") {
+                    arg = arg.slice(1);
+                    coe = -1;
+                } else if (arg[0] === "+") {
+                    arg = arg.slice(1);
+                }
+                let match = arg.match(DURATION_PATTERN);
+                if (match !== null) {
+                    let [, weeks = 0, days = 0, hours = 0, minutes = 0, seconds = 0] = match;
+                    time += (weeks * 6048E2 + days * 864E2 + hours * 36E2 + minutes * 60 + seconds) * coe;
+                }
+            }
+            let md = `<t:${time}`;
+            if (style !== undefined) {
+                md += `:${style}`;
+            }
+            document.getElementsByTagName("body")[0].innerText = md = md + ">";
+            document.querySelector('[property="og:description"]').setAttribute("content", md);
+        </script>
+    </body>
+</html>
