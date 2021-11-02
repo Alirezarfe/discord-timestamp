@@ -20,13 +20,14 @@
             const ALL_STYLES = "tTdDfFR";
             const DATETIME_PATTERN = /^(?:(\d{4})-)?(\d{1,2})-(\d{1,2})(?:_(\d{1,2}):(\d{1,2})(?::\d{1,2})?)?$/;
             const DURATION_PATTERN = /^(?:(\d+)w)?(?:(\d+)d)?(?:(\d+)h)?(?:(\d+)m)?(?:(\d+)s?)?$/i;
+            const UINT_PATTERN = /^\d+$/;
             
             let time = new Date, params = new URLSearchParams(window.location.search), style;
             if (params.has("style") && ALL_STYLES.includes(params.get("style"))) {
                 style = params.get("style");
             }
             if (params.has("from")) {
-                let match = params.get("from").match(DATETIME_PATTERN);
+                let arg = match = params.get("from"), arg.match(DATETIME_PATTERN);
                 if (match !== null) {
                     time = new Date(0);
                     let [, year = new Date().getFullYear(), mo, day, hours, minutes, seconds] = match;
@@ -34,6 +35,8 @@
                     if (hours !== undefined) {
                         time.setHours(hours), time.setMinutes(minutes), time.setSeconds(seconds ?? 0);
                     }
+                } else if (UINT_PATTERN.test(arg)) { // treat as Discord snowflake ID
+                    time = new Date(Math.floor(arg / 4194304) + 1420070400000);
                 }
             }
             time = Math.floor(+time / 1000);
