@@ -23,7 +23,7 @@ Bad arguments will be omitted.
 - <https://alirezarfe.github.io/discord-timestamp/?from=2022-01-01_5:30>
 - <https://alirezarfe.github.io/discord-timestamp/?from=04-01>
 - <https://alirezarfe.github.io/discord-timestamp/?from=04-01_18:45>
-- - <https://alirezarfe.github.io/discord-timestamp/?from=905037423627604029>
+- <https://alirezarfe.github.io/discord-timestamp/?from=905037423627604029>
 
 ### TODO
 
