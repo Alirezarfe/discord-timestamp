@@ -6,7 +6,8 @@ Learn more about Discord timestamp markdown [here](https://github.com/Alirezarfe
 - `?from=DATETIME` defaults to current time, example of acceptable syntax:
     - `YYYY-MM-DD_HH:MM:SS`
     - `YYYY-MM-DD`
-    - `MM-DD_HH:MM` \
+    - `MM-DD_HH:MM` 
+    - Plain numbers will be treated as Discord snowflake ID \
     You may omit the year in date, and seconds in time or the time overall.
 - `?style=STYLE` from [Discord Dev Docs](https://discord.com/developers/docs/reference#message-formatting-timestamp-styles), it defaults to Discord's default, which at the moment is `f`
 - `?add=DURATION` a duration to add to or subtract from the current time, example of acceptable arguments are: 2h30m, 1w2d, 1h20m40s, 60 etc. to subtract a duration simply prefix the argument with minus `-` sign
