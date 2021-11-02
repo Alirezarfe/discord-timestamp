@@ -27,7 +27,7 @@
                 style = params.get("style");
             }
             if (params.has("from")) {
-                let arg = match = params.get("from"), arg.match(DATETIME_PATTERN);
+                let arg = params.get("from"), match = arg.match(DATETIME_PATTERN);
                 if (match !== null) {
                     time = new Date(0);
                     let [, year = new Date().getFullYear(), mo, day, hours, minutes, seconds] = match;
