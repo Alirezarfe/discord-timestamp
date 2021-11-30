@@ -1,4 +1,28 @@
-Learn more about Discord timestamp markdown [here](https://github.com/Alirezarfe/random-docs/blob/main/src/Discord/Markdown.md#timestamp).
+Timestamp markdown is a rather "internationalized" way of displaying date and time where the information is rendered according to timezone and locale of the user on their end. this tool makes creating these markdowns a little convenient, alternatively - if you are looking to do this in a standalone manner, just use a tool [like this](https://www.epochconverter.com/) to retrieve the unix epoch time and insert it in the markdown.
+
+Either of the following notations are acceptable:
+
+`<t:EPOCH_SECONDS>` → e.g <t:1472750028>
+
+![Styleless timestamp preview](https://cdn.discordapp.com/attachments/652544869314854934/862699749652430868/timestamp_1.png)
+
+`<t:EPOCH_SECONDS:STYLE>` → e.g <t:1472750028:R>
+
+![Relative style timestamp preview](https://cdn.discordapp.com/attachments/652544869314854934/862699751602651156/timestamp_2.png)
+
+Here is a list of available styles from [discord documentation](https://discord.com/developers/docs/reference#message-formatting-timestamp-styles).
+
+| Style | Example Output               | Description     |
+| ----- | ---------------------------- | --------------- |
+| t     | 16:20                        | Short Time      |
+| T     | 16:20:30                     | Long Time       |
+| d     | 20/04/2021                   | Short Date      |
+| D     | 20 April 2021                | Long Date       |
+| f    | 20 April 2021 16:20          | Short Date/Time |
+| F     | Tuesday, 20 April 2021 16:20 | Long Date/Time  |
+| R     | 2 months ago                 | Relative Time   |
+
+Otherwise, this tool is at your service.
 
 ### Query Parameters
 *All of the following parameters are optional*
